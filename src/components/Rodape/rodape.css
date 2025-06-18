@@ -1,0 +1,20 @@
+.Footer {
+  background-color: #1E40AF;  /* Azul Royal escuro */
+  color: #ffffff;             /* Texto branco puro */
+  padding: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+    transition: text-decoration 0.3s ease;
+    padding: 10px;
+}
+
+/* quando passar o mouse em cima tem o underline talvez seja alterado */
+a::hover{
+    text-decoration: underline;
+}

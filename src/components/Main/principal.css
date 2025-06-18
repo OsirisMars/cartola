@@ -1,0 +1,10 @@
+.teste{
+    background: linear-gradient(to right, royalblue, white);
+}
+
+.time{
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
