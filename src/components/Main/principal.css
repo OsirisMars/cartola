@@ -1,10 +1,30 @@
-.teste{
+.teste {
     background: linear-gradient(to right, royalblue, white);
+    display: flex;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    justify-content: center; /* Centraliza os itens no eixo vertical */
+    align-items: center;     /* Centraliza os itens no eixo horizontal */
+    height: 100vh;           /* Garante que ocupe 100% da altura da tela */
+    text-align: center;      /* Garante que o texto dentro dos botões fique centralizado */
 }
 
-.time{
-    padding: 10px 20px;
+.teste div {
+    display: flex;           /* Alinha os botões horizontalmente */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    gap: 20px;               /* Adiciona espaçamento entre os botões */
+}
+
+.time {
+    padding: 10px 5rem;
     border-radius: 10px;
     font-size: 16px;
     cursor: pointer;
+    background-color: royalblue;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.time:hover {
+    background-color: #1E3A8A; /* Cor mais escura no hover */
 }
