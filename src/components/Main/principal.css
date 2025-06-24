@@ -1,30 +1,60 @@
 .teste {
-    background: linear-gradient(to right, royalblue, white);
-    display: flex;
-    flex-direction: column; /* Organiza os elementos verticalmente */
-    justify-content: center; /* Centraliza os itens no eixo vertical */
-    align-items: center;     /* Centraliza os itens no eixo horizontal */
-    height: 100vh;           /* Garante que ocupe 100% da altura da tela */
-    text-align: center;      /* Garante que o texto dentro dos botões fique centralizado */
+  background: linear-gradient(to right, royalblue, white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  gap: 30px;
 }
 
 .teste div {
-    display: flex;           /* Alinha os botões horizontalmente */
-    justify-content: center; /* Centraliza os botões horizontalmente */
-    gap: 20px;               /* Adiciona espaçamento entre os botões */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
 }
 
 .time {
-    padding: 10px 5rem;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: royalblue;
-    color: white;
-    border: none;
-    transition: background-color 0.3s ease;
+  padding: 12px 4rem;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: royalblue;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .time:hover {
-    background-color: #1E3A8A; /* Cor mais escura no hover */
+  background-color: #1E3A8A;
+}
+
+.content {
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 5px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hide {
+  max-height: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show {
+  max-height: 400px;
+  padding: 15px;
+  opacity: 1;
+  pointer-events: auto;
 }
