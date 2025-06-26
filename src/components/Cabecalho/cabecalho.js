@@ -16,7 +16,7 @@ export default function Header() {
               <a href="/">Início</a>
               <a href="/times">Times</a>
               <a href="/criar">Criar Clube</a>
-              <a href="/login">Entrar</a>
+              <a href="/login">Entrar/Cadastro</a>
           </nav>
         </div>
     </header>

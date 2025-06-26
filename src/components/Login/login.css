@@ -1,0 +1,29 @@
+.Prompt {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+    padding: 2rem;
+    gap: 1rem;
+    border-radius: 2rem;
+}
+
+input {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+label {
+  font-weight: bold;
+}
+
+section{
+    background: linear-gradient(to left, white, royalblue);
+    padding: 30px;
+}
+a{
+    color: black;
+}
