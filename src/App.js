@@ -2,6 +2,7 @@ import Cabecalho from './components/Cabecalho/cabecalho'
 import Rodape from './components/Rodape/rodape'
 import Principal from './components/Main/principal';
 import Login from './components/Login/login';
+import Times from './components/Times/times';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       {/* Área de troca de página */}
       <Routes>
         <Route path="/" element={<Principal />} />
-        {/* <Route path="/times" element={<Times />} /> */}
+        <Route path="/times" element={<Times />} />
         {/* <Route path="/criar" element={<CriarClube />} /> */}
         <Route path="/login" element={<Login />} />
       </Routes>
