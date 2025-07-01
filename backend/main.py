@@ -1,5 +1,9 @@
 #para iniciar a aplicação coloca no terminal "uvicorn main:app --reload"
 # backend/main.py
+# Para instalar alguma biblioteca a parte fzr pip update ou install inicie o ambiente virtual
+# Para iniciar primeiro faça cd backend/
+# Em seguida digite source venv/Scripts/activate
+# Para saber se está no venv ou não irá aparecer "(venv)" no começo
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -33,3 +37,4 @@ def listar_times():
 @app.post("/times")
 def criar_time(dados: dict):
     return {"msg": "Time criado", "time": dados}
+
