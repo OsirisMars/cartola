@@ -1,3 +1,4 @@
+#para iniciar a aplicação coloca no terminal "uvicorn main:app --reload"
 # backend/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,6 +33,3 @@ def listar_times():
 @app.post("/times")
 def criar_time(dados: dict):
     return {"msg": "Time criado", "time": dados}
-
-
-# teste 1 2 3
