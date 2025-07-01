@@ -1,0 +1,1 @@
+abafe aqui não é visivel, senha para a database: root usuario: postgre
