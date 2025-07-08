@@ -7,6 +7,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+
 app = FastAPI()
 
 # Permitir acesso do React (ex: localhost:3000)
@@ -21,7 +22,7 @@ app.add_middleware(
 # Rota de teste
 @app.get("/")
 def home():
-    return {"mensagem": "Bem-vindo à API do FutClub || Hello World"}
+    return {"mensagem": "Bem-vindo à API do FutClub"}
 
 
 # Rota para listar times
