@@ -5,6 +5,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
+  const [mensagem, setMensagem] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,15 +22,19 @@ export default function Login() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log('Login bem-sucedido:', data);
-        // Redirecionar ou salvar token
-        // Ex: localStorage.setItem("token", data.token);
+        // Se você receber um token:
+        // localStorage.setItem("token", data.token);
+        setMensagem('Login bem-sucedido!');
+        setErro('');
+        // window.location.href = '/dashboard'; // Redirecionar se quiser
       } else {
-        setErro(data.msg || 'Erro ao fazer login');
+        setErro(data.detail || 'Erro ao fazer login');
+        setMensagem('');
       }
     } catch (err) {
       console.error(err);
       setErro('Erro de conexão com o servidor');
+      setMensagem('');
     }
   };
 
@@ -57,7 +62,10 @@ export default function Login() {
         />
 
         <button type="submit">Login</button>
+
         {erro && <p style={{ color: 'red' }}>{erro}</p>}
+        {mensagem && <p style={{ color: 'green' }}>{mensagem}</p>}
+
         <a href="/cadastro">Cadastro</a>
       </form>
     </section>
