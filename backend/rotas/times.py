@@ -9,9 +9,9 @@ class Time(BaseModel):
 @router.get("/")
 async def listar_times():
     return [
-        {"id": 1, "nome": "Futebol Clube SP"},
-        {"id": 2, "nome": "Atlético do Norte"},
-        {"id": 3, "nome": "Flamengo"},
+        {"id": 1, "nome": "Futebol Clube SP", "volante": "Juninho"},
+        {"id": 2, "nome": "Atlético do Norte", "volante": "Juninho"},
+        {"id": 3, "nome": "Flamengo", "volante": "Juninho", "zagueiro":"Ronaldo"},
     ]
 
 @router.post("/")

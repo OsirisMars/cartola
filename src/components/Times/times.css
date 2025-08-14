@@ -1,0 +1,23 @@
+/* src/pages/Times.css */
+.times-container {
+  min-height: 100vh;
+  padding: 20px;
+  
+  /* Fundo com degradê esportivo */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+  /* Efeito de textura suave (overlay com padrão) */
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+    linear-gradient(225deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%),
+    linear-gradient(315deg, rgba(255, 255, 255, 0.05) 25%, #2c5364 25%);
+  
+  background-size: 50px 50px;
+  
+  color: white;
+  font-family: Arial, sans-serif;
+}
+.button_cadastro{
+    flex: auto;
+}
