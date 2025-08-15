@@ -1,41 +1,64 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional, List
+from motor.motor_asyncio import AsyncIOMotorClient
+from bson import ObjectId
 
 router = APIRouter(prefix="/times", tags=["Times"])
 
-# Modelo para criar time
+# ===============================
+# Conexão com MongoDB
+# ===============================
+MONGO_URI = "mongodb://localhost:27017"
+DB_NAME = "cartola"
+
+client = AsyncIOMotorClient(MONGO_URI)
+db = client[DB_NAME]
+times_collection = db["times"]
+
+# ===============================
+# Modelos
+# ===============================
 class TimeCreate(BaseModel):
     nome: str
     volante: Optional[str] = None
     zagueiro: Optional[str] = None
     tecnico: Optional[str] = None
 
-# Modelo para listar/retornar time
-class Time(TimeCreate):
-    id: int
+class TimeResponse(TimeCreate):
+    id: str
 
-# Lista temporária para simular um banco
-times_db: List[Time] = [
-    Time(id=1, nome="Futebol Clube SP", volante="Juninho"),
-    Time(id=2, nome="Atlético do Norte", volante="Juninho"),
-    Time(id=3, nome="Flamengo", volante="Juninho", zagueiro="Ronaldo"),
-]
+# ===============================
+# Funções auxiliares
+# ===============================
+def time_helper(time) -> dict:
+    return {
+        "id": str(time["_id"]),
+        "nome": time["nome"],
+        "volante": time.get("volante"),
+        "zagueiro": time.get("zagueiro"),
+        "tecnico": time.get("tecnico"),
+    }
 
-@router.get("/", response_model=List[Time])
+# ===============================
+# Rotas
+# ===============================
+@router.get("/", response_model=List[TimeResponse])
 async def listar_times():
-    return times_db
+    times = []
+    async for time in times_collection.find():
+        times.append(time_helper(time))
+    return times
 
-@router.post("/", response_model=Time)
+@router.post("/", response_model=TimeResponse)
 async def criar_time(dados: TimeCreate):
-    # Checa se já existe time com mesmo nome
-    for t in times_db:
-        if t.nome.lower() == dados.nome.lower():
-            raise HTTPException(status_code=400, detail="Time já existe.")
+    # Checa se já existe
+    existente = await times_collection.find_one({"nome": dados.nome})
+    if existente:
+        raise HTTPException(status_code=400, detail="Time já existe.")
 
-    novo_time = Time(
-        id=len(times_db) + 1,
-        **dados.dict()
-    )
-    times_db.append(novo_time)
-    return novo_time
+    novo_time = dados.dict()
+    resultado = await times_collection.insert_one(novo_time)
+
+    criado = await times_collection.find_one({"_id": resultado.inserted_id})
+    return time_helper(criado)
