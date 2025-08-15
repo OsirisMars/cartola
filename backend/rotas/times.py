@@ -38,7 +38,7 @@ def time_helper(time) -> dict:
         "volante": time.get("volante"),
         "zagueiro": time.get("zagueiro"),
         "tecnico": time.get("tecnico"),
-    }
+}
 
 # ===============================
 # Rotas
